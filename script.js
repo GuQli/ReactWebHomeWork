@@ -1,4 +1,4 @@
-console.log("hiii");
+"use strict";
 
 // davaleba 1 //
 
@@ -82,3 +82,87 @@ const diceGame = function () {
   }
 };
 diceGame();
+
+// // // davaleba 3 // // //
+
+//1.
+
+const f4 = function (a, b, ...rest) {
+  let mult = 1;
+  for (const v of rest) {
+    mult *= v;
+  }
+  return [a + b, mult];
+};
+
+console.log(f4(2, 2, 3, 4, 5));
+
+// // function s pirdapir array rom mivawodot mashin rogor iqneba?
+// // .reduce -it gaketeba ar sheidzleba?
+
+// 2.
+
+const user = {
+  banks: [
+    { adress: { city: "tbilisi" } },
+    { adress: { city: "batumi" } },
+    { adress: { city: "poti" } },
+  ],
+};
+
+const getCity = function ({
+  banks: [
+    ,
+    ,
+    {
+      adress: { city },
+    },
+  ],
+}) {
+  return city;
+};
+
+console.log(getCity(user));
+
+//3.
+const books = {
+  book1: { type: "daf", pages: 6 },
+  book2: { type: "dam", pages: 10 },
+};
+
+const f5 = function (books) {
+  const newBooks = { ...books };
+  return newBooks;
+};
+
+console.log(f5(books));
+
+// // // // davaleba 4 // // // // leqcia #6
+
+//1.
+const f6 = function (string, valueToReplace, valueToReplaceWith) {
+  const newString = string.split(" ");
+  newString.splice(newString.indexOf(valueToReplace), 1, valueToReplaceWith);
+  return newString.join(" ");
+};
+
+console.log(f6("a b c", "b", "z"));
+
+//2.
+const capitalize = (string) =>
+  string
+    .split(" ")
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+
+console.log(capitalize("hi How are you"));
+
+//3.
+const users3 = [
+  { name: "lasha", age: 30 },
+  { name: "saba", age: 20 },
+  { name: "bondo", age: 15 },
+];
+
+const sort = (users) => users.sort((a, b) => a.age - b.age);
+console.log(sort(users3));
