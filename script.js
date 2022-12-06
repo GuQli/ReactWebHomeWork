@@ -166,3 +166,28 @@ const users3 = [
 
 const sort = (users) => users.sort((a, b) => a.age - b.age);
 console.log(sort(users3));
+
+// // // // // davaleba 5 // // // // // leqcia #7
+const body = document.querySelector("body");
+const button = document.querySelector(".hider");
+const divText = document.querySelector("#text");
+
+// 1. hide div element
+
+button.addEventListener("click", function () {
+  divText.classList.toggle("hidden");
+});
+
+// 2. insert HTML to DOM
+body.insertAdjacentHTML(
+  "beforeend",
+  `
+  <div id="card">
+  <h2>GuQli</h2>
+  <a href="#">Go To Profile</a>
+  </div>`
+);
+
+// 3. background color - RED
+const card = document.querySelector("#card");
+card.style.backgroundColor = "red";

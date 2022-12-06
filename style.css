@@ -1,0 +1,17 @@
+.hider {
+  font-family: sans-serif;
+  text-align: center;
+
+  border: solid black;
+  background-color: rgb(255, 180, 127);
+  display: flex;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* #card {
+  background-color: red;
+} */
