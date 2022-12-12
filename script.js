@@ -191,3 +191,75 @@ body.insertAdjacentHTML(
 // 3. background color - RED
 const card = document.querySelector("#card");
 card.style.backgroundColor = "red";
+
+// // // davaleba 6 // // // leqcia #9
+
+// 1. create button opening MODAL window with Black background
+
+const modal = document.querySelector(".modal");
+const btnOpenModal = document.querySelector(".show-modal");
+const btnCloseModal = document.querySelector(".close-modal");
+const overlay = document.querySelector(".overlay");
+
+const modalOpen = function () {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+const modalClose = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
+btnOpenModal.addEventListener("click", modalOpen);
+btnCloseModal.addEventListener("click", modalClose);
+overlay.addEventListener("click", modalClose);
+
+// 2. change body color by input value
+
+const btnInput = document.querySelector(".btn-input");
+const input = document.getElementById("change-color");
+
+// const changeBodyColor = function () {
+//   let color = input.value;
+//   if (
+//     color === "red" ||
+//     color === "blue" ||
+//     color === "green" ||
+//     color === "black" ||
+//     color === "white"
+//   ) {
+//     body.style.background = `${color}`;
+//   } else
+//     alert(
+//       "Please input on of the following colors: red, blue, green, black, white "
+//     );
+// };
+
+// // Improved Version
+
+const colors = ["red", "blue", "green", "black", "white"];
+const changeBodyColor1 = function () {
+  let color = input.value;
+  colors.includes(color)
+    ? (body.style.background = color)
+    : alert(
+        '"Please input on of the following colors: red, blue, green, black, white "'
+      );
+};
+
+btnInput.addEventListener("click", changeBodyColor1);
+
+// 3 display average according to input data
+const result = document.querySelector(".result");
+const calcAvgBtn = document.querySelector(".btn-avg");
+const inputAvg = document.getElementById("calc-avg");
+
+console.log(result);
+calcAvgBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  const numbers = inputAvg.value.split(":");
+  const avg =
+    numbers.map((n) => +n).reduce((acc, cur) => acc + cur, 0) / numbers.length;
+  if (!avg) return;
+  result.textContent = `Average = ${avg}`;
+});
