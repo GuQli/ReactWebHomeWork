@@ -254,7 +254,6 @@ const result = document.querySelector(".result");
 const calcAvgBtn = document.querySelector(".btn-avg");
 const inputAvg = document.getElementById("calc-avg");
 
-console.log(result);
 calcAvgBtn.addEventListener("click", function (e) {
   e.preventDefault();
   const numbers = inputAvg.value.split(":");
@@ -263,3 +262,52 @@ calcAvgBtn.addEventListener("click", function (e) {
   if (!avg) return;
   result.textContent = `Average = ${avg}`;
 });
+
+// // // davaleba 7 // // // leqcia #10
+
+// 1. setTimeOut function with promise
+
+const mySetTimeOut = function (delaySec) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, delaySec * 1000);
+  });
+};
+
+mySetTimeOut(2).then(() => console.log(`time passed`));
+
+// 2. rewrite pyramid of doom in promises and Async/await
+
+// getFacebookProfile(1, (profile) => {
+//   getFacebookProfile(profile.friends[0].id, (friendProfile) => {
+//     getFacebookProfile(friendProfile.friends[0].id, (friendsFriend) => {
+//       getFacebookProfile(friendsFriend.friends[0].id, (finalProfile) => {
+//         console.log("finally, i have all the profiles");
+//       });
+//     });
+//   });
+// });
+
+// promise.then
+
+const getFacebookProfile = function (n, profile) {
+  return new Promise((res, rej) => res(n, profile)), (rej) => rej(err);
+};
+
+getFacebookProfile(1, profile)
+  .then((friendProfile) => getFacebookProfile(friendProfile.friends[0].id))
+  .then((friendsFriend) => getFacebookProfile(friendsFriend.friends[0].id))
+  .then((finalProfile) => console.log("finally, i have all the profiles"))
+  .catch((err) => console.error(err));
+
+// async await
+
+const getFbProfileAsync = async function (n, profile) {
+  try {
+    const friendProfile = await getFbProfileAsync(profile.friends[0].id);
+    const friendsFriend = await getFbProfileAsync(friendProfile.friends[0].id);
+    const finalProfile = await getFbProfileAsync(friendsFriend.friends[0].id);
+    console.log(`finall all the profiles: ${finalProfile}`);
+  } catch (err) {
+    console.error(err);
+  }
+};
